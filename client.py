@@ -2,7 +2,7 @@ import pygame
 from network import Network
 import random as rnd
 
-
+# test
 def read_pos(s: str):
     s = s.split(",")
     return int(s[0]), int(s[1])
