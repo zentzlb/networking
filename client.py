@@ -2,21 +2,12 @@ import pygame
 from network import Network
 import random as rnd
 
-# test
-def read_pos(s: str):
-    s = s.split(",")
-    return int(s[0]), int(s[1])
-
-
-def make_pos(tup: tuple):
-    return str(tup[0]) + ',' + str(tup[1])
-
 
 class Player(pygame.Rect):
     def __init__(self, x, y, w, h, color):
         super().__init__(x, y, w, h)
         self.color = color
-        self.vel = 1
+        self.vel = 3
 
     def __reduce__(self):
         return type(self), (self.x, self.y, self.width, self.height, self.color)
@@ -41,14 +32,15 @@ class Player(pygame.Rect):
         :return:
         """
         # keys = pygame.key.get_pressed()
-        if keys[pygame.K_UP]:
-            self.y -= self.vel
-        if keys[pygame.K_DOWN]:
-            self.y += self.vel
-        if keys[pygame.K_LEFT]:
-            self.x -= self.vel
-        if keys[pygame.K_RIGHT]:
-            self.x += self.vel
+        if keys:
+            if keys[pygame.K_UP]:
+                self.y -= self.vel
+            if keys[pygame.K_DOWN]:
+                self.y += self.vel
+            if keys[pygame.K_LEFT]:
+                self.x -= self.vel
+            if keys[pygame.K_RIGHT]:
+                self.x += self.vel
 
 
 class Engine:
